@@ -1,0 +1,96 @@
+<section class="about-section section-spacing" id="about">
+  <div class="container">
+    <div class="glass-card about-card">
+
+      <!-- Left Column: Bio & Story -->
+      <div class="about-content">
+        <span class="section-eyebrow">ABOUT ME</span>
+        <h2 class="section-title">
+          Building Clean, Scalable <span class="gradient-text">Digital Experiences</span>
+        </h2>
+
+        <p class="about-description">
+          {{ profileData?.about || 'Passionate Front-End & Full-Stack Developer focused on crafting responsive, high-performance web applications with modern architectures and clean user interfaces.' }}
+        </p>
+
+        <!-- Quick Info Pills -->
+        <div class="info-pills">
+          @if (profileData?.jobTitle) {
+            <div class="glass-surface info-pill">
+              <span class="pill-icon">💻</span>
+              <span>{{ profileData?.jobTitle }}</span>
+            </div>
+          }
+
+          @if (profileData?.contactEmail) {
+            <a [href]="'mailto:' + profileData!.contactEmail" class="glass-surface info-pill">
+              <span class="pill-icon">✉️</span>
+              <span>{{ profileData?.contactEmail }}</span>
+            </a>
+          }
+
+          <div class="glass-surface info-pill">
+            <span class="status-indicator" [class.available]="profileData?.isAvailable"></span>
+            <span>{{ profileData?.isAvailable ? 'Open to Opportunities' : 'Currently Busy' }}</span>
+          </div>
+        </div>
+
+        <!-- Bottom CTA -->
+        <div class="about-actions">
+          <a routerLink="/contact" class="btn-dark-pill">
+            <span>Let's Work Together</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
+
+          @if (profileData?.cvFile?.url; as cvUrl) {
+            <a [href]="serverUrl + cvUrl" target="_blank" download class="btn-glass-pill">
+              <span>Resume / CV</span>
+            </a>
+          }
+        </div>
+      </div>
+
+      <!-- Right Column: Glass Feature Highlights -->
+      <div class="about-highlights">
+        <div class="glass-surface highlight-box">
+          <div class="highlight-icon purple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
+            </svg>
+          </div>
+          <div class="highlight-info">
+            <h3>Clean Architecture</h3>
+            <p>Modular, maintainable TypeScript & Angular codebases built for scale.</p>
+          </div>
+        </div>
+
+        <div class="glass-surface highlight-box">
+          <div class="highlight-icon indigo">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 5a1 1 0 011-1h14a1 1 0 011 1v2a1 1 0 01-1 1H5a1 1 0 01-1-1V5zM4 13a1 1 0 011-1h6a1 1 0 011 1v6a1 1 0 01-1 1H5a1 1 0 01-1-1v-6zM16 13a1 1 0 011-1h2a1 1 0 011 1v6a1 1 0 01-1 1h-2a1 1 0 01-1-1v-6z" />
+            </svg>
+          </div>
+          <div class="highlight-info">
+            <h3>Modern UI / UX</h3>
+            <p>Pixel-accurate, accessible interfaces with smooth micro-interactions.</p>
+          </div>
+        </div>
+
+        <div class="glass-surface highlight-box">
+          <div class="highlight-icon blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M5 12h14M5 12a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v4a2 2 0 01-2 2M5 12a2 2 0 00-2 2v4a2 2 0 002 2h14a2 2 0 002-2v-4a2 2 0 00-2-2" />
+            </svg>
+          </div>
+          <div class="highlight-info">
+            <h3>Full-Stack Integration</h3>
+            <p>Seamless REST API integration with Node.js, Express, and MongoDB.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

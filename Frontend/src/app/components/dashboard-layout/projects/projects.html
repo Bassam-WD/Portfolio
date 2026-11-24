@@ -1,0 +1,83 @@
+<div class="projects-page">
+
+  <div class="page-heading">
+    <div>
+      <h1>Projects</h1>
+      <p>Manage the work showcased on your public portfolio.</p>
+    </div>
+    <button type="button" class="add-btn" (click)="openAdd()">+ Add Project</button>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" placeholder="Filter projects by title..." (input)="onSearch($event)">
+    <span class="count">{{ projects.length }} projects</span>
+  </div>
+
+  @if (filteredProjects.length === 0) {
+    <p class="empty">No projects found.</p>
+  }
+
+  <div class="projects-grid">
+    @for (project of filteredProjects; track project._id) {
+      <article class="project-card">
+
+        <div class="cover">
+          @if (imageUrl(project)) {
+            <img [src]="imageUrl(project)" [alt]="project.title">
+          } @else {
+            <div class="cover-placeholder">No image</div>
+          }
+          <span class="badge" [class.draft]="!project.isPublished">
+            {{ project.isPublished ? 'Published' : 'Draft' }}
+          </span>
+        </div>
+
+        <div class="card-body">
+          <h3>{{ project.title }}</h3>
+          <p>{{ project.shortDescription }}</p>
+
+          <div class="tags">
+            @for (tech of project.techStack ?? []; track tech) {
+              <span class="tag">{{ tech }}</span>
+            }
+          </div>
+        </div>
+
+        <div class="card-footer">
+          <div class="toggles-group">
+            <label class="toggle-item">
+              <span class="switch">
+                <input type="checkbox" [checked]="project.isPublished" (change)="togglePublished(project)">
+                <span class="slider"></span>
+              </span>
+              <span class="toggle-label">Publish</span>
+            </label>
+
+            <label class="toggle-item" [class.disabled]="!project.isPublished">
+              <span class="switch">
+                <input
+                  type="checkbox"
+                  [checked]="project.inHome"
+                  [disabled]="!project.isPublished"
+                  (change)="toggleInHome(project)">
+                <span class="slider"></span>
+              </span>
+              <span class="toggle-label">Home</span>
+            </label>
+          </div>
+
+          <div class="actions">
+            <button type="button" class="icon-btn" title="Edit" (click)="openEdit(project)">✎</button>
+            <button type="button" class="icon-btn danger" title="Delete" (click)="deleteProject(project)">🗑</button>
+          </div>
+        </div>
+
+      </article>
+    }
+  </div>
+
+  @if (isModalOpen) {
+    <app-project-modal [project]="editingProject" (saved)="onSaved($event)" (closed)="closeModal()" />
+  }
+
+</div>

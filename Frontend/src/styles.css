@@ -1,0 +1,216 @@
+/* Google Font: Plus Jakarta Sans & Inter */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+/* =========================================
+   1. Design System Variables (:root)
+   ========================================= */
+:root {
+  /* Ambient & Surface Colors */
+  --bg-base: #eef0f9;
+  --bg-base-light: #f6f7fd;
+  --glass-bg: linear-gradient(135deg, rgba(255, 255, 255, 0.74) 0%, rgba(244, 245, 252, 0.56) 100%);
+  --glass-bg-strong: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(255, 255, 255, 0.88);
+  --glass-blur: blur(20px);
+
+  /* Brand & Accent Colors */
+  --primary-purple: #8b5cf6;
+  --primary-indigo: #6366f1;
+  --primary-blue: #3b82f6;
+  --brand-gradient: linear-gradient(90deg, #9333ea 0%, #6366f1 55%, #3b82f6 100%);
+  --dark-surface: #0b0d14;
+  --status-green: #10b981;
+
+  /* Typography Colors */
+  --text-primary: #111827;
+  --text-secondary: #4b5563;
+  --text-muted: #6b7280;
+
+  /* Shadows */
+  --shadow-glass: 0 20px 44px -12px rgba(99, 102, 241, 0.08),
+                  inset 0 1px 1px rgba(255, 255, 255, 0.95);
+  --shadow-pill: 0 6px 18px rgba(99, 102, 241, 0.08);
+  --shadow-dark-btn: 0 10px 22px -6px rgba(11, 13, 20, 0.35);
+
+  /* Layout & Radius */
+  --container-max: 1152px;
+  --radius-card: 2rem;
+  --radius-box: 1.25rem;
+  --radius-pill: 9999px;
+}
+
+/* =========================================
+   2. Global Resets & Base Body
+   ========================================= */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  font-family: 'Plus Jakarta Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  color: var(--text-primary);
+  background-color: var(--bg-base);
+  background-image:
+    radial-gradient(circle at 12% 15%, rgba(167, 139, 250, 0.18), transparent 42%),
+    radial-gradient(circle at 88% 25%, rgba(99, 102, 241, 0.18), transparent 48%),
+    radial-gradient(circle at 50% 85%, rgba(147, 197, 253, 0.16), transparent 50%),
+    linear-gradient(180deg, var(--bg-base) 0%, var(--bg-base-light) 100%);
+  background-attachment: fixed;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-base);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(99, 102, 241, 0.25);
+  border-radius: var(--radius-pill);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(99, 102, 241, 0.45);
+}
+
+/* =========================================
+   3. Shared Utility Classes
+   ========================================= */
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+.section-spacing {
+  padding: 3.5rem 0;
+}
+
+/* Main Frosted Glass Card */
+.glass-card {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  -webkit-backdrop-filter: var(--glass-blur);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-card);
+  box-shadow: var(--shadow-glass);
+}
+
+/* Smaller Glass Sub-Card / Pill */
+.glass-surface {
+  background: rgba(255, 255, 255, 0.68);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1.5px solid var(--glass-border);
+  border-radius: var(--radius-box);
+  box-shadow: var(--shadow-pill);
+}
+
+/* Section Headers */
+.section-eyebrow {
+  display: inline-block;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--primary-purple);
+  margin-bottom: 0.5rem;
+}
+
+.section-title {
+  font-size: 2.25rem;
+  font-weight: 800;
+  line-height: 1.2;
+  letter-spacing: -0.025em;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
+.gradient-text {
+  background: var(--brand-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Global Pill Buttons */
+.btn-dark-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.75rem;
+  background-color: var(--dark-surface);
+  color: #ffffff;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-dark-btn);
+  transition: all 0.25s ease;
+}
+
+.btn-dark-pill:hover {
+  background-color: var(--primary-indigo);
+  transform: translateY(-2px);
+}
+
+.btn-glass-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.6rem;
+  padding: 0.85rem 1.65rem;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--text-primary);
+  border: 1.5px solid rgba(255, 255, 255, 0.95);
+  font-size: 0.9rem;
+  font-weight: 600;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-pill);
+  transition: all 0.25s ease;
+}
+
+.btn-glass-pill:hover {
+  background: #ffffff;
+  color: var(--primary-indigo);
+  transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  .section-title {
+    font-size: 1.75rem;
+  }
+}

@@ -1,0 +1,39 @@
+<section class="works-section section-spacing" id="our-works">
+  <div class="container">
+    <div class="glass-card works-wrapper">
+
+      <!-- Section Header -->
+      <div class="works-header">
+        <span class="section-eyebrow">PORTFOLIO SHOWCASE</span>
+        <h2 class="section-title">
+          Our <span class="gradient-text">Works</span>
+        </h2>
+        <p class="works-subtitle">
+          A curated selection of web applications and digital solutions crafted with clean code and modern UI.
+        </p>
+      </div>
+
+      <!-- Projects Grid -->
+      @if (homeProjects.length > 0) {
+        <div class="works-grid">
+          @for (item of homeProjects; track item._id || item.title) {
+            <app-project-card [project]="item" />
+          }
+        </div>
+      } @else {
+        <p class="empty-state">No featured works available yet.</p>
+      }
+
+      <!-- Bottom CTA Button -->
+      <div class="works-footer">
+        <a routerLink="/projects" class="btn-dark-pill">
+          <span>View All Projects</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+          </svg>
+        </a>
+      </div>
+
+    </div>
+  </div>
+</section>

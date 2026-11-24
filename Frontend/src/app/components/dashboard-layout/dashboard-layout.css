@@ -1,0 +1,110 @@
+
+/* Global */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.dashboard-layout {
+  display: flex;
+  min-height: 100vh;
+  background: #f4f5fa;
+  color: #202633;
+  font-family: Arial, sans-serif;
+}
+
+/* =========================
+   Sidebar
+========================= */
+
+
+/* =========================
+   Main Area
+========================= */
+
+.main-area {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Header */
+
+
+/* Page Content */
+
+.dashboard-content {
+  padding: 25px;
+  min-height: calc(100vh - 64px);
+}
+
+/* =========================
+   Responsive
+========================= */
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 75px;
+    min-width: 75px;
+  }
+
+  .sidebar-brand {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .sidebar-brand span {
+    display: none;
+  }
+
+  .sidebar-nav {
+    padding: 15px 8px;
+  }
+
+  .nav-link {
+    justify-content: center;
+    padding: 0;
+  }
+
+  .nav-link span:not(.active-dot) {
+    display: none;
+  }
+
+  .active-dot {
+    display: none;
+  }
+
+  .sidebar-user {
+    justify-content: center;
+    padding: 10px 5px;
+  }
+
+  .user-info,
+  .logout-btn {
+    display: none;
+  }
+
+  .dashboard-header {
+    padding: 0 15px;
+  }
+
+  .dashboard-content {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .breadcrumb {
+    font-size: 10px;
+    gap: 6px;
+  }
+
+  .live-site-btn {
+    padding: 0 8px;
+    font-size: 9px;
+  }
+
+  .header-actions {
+    gap: 5px;
+  }
+}

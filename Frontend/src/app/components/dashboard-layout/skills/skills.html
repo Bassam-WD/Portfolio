@@ -1,0 +1,38 @@
+<div class="skills-page">
+
+  <div class="page-heading">
+    <div>
+      <h1>Skills</h1>
+      <p>Curate the skills displayed on your public portfolio.</p>
+    </div>
+    <button type="button" class="add-btn" (click)="openAdd()">+ Add Skill</button>
+  </div>
+
+  <div class="toolbar">
+    <input type="text" placeholder="Filter skills by name..." (input)="onSearch($event)">
+    <span class="count">{{ skills().length }} skills</span>
+  </div>
+
+  <div class="skills-grid">
+    @for (skill of filteredSkills(); track skill._id) {
+    <div class="skill-card" [class.muted]="!skill.isVisible">
+      <div class="skill-icon">{{ skill.name.charAt(0) }}</div>
+      <span class="skill-name">{{ skill.name }}</span>
+
+      <label class="switch">
+        <input type="checkbox" [checked]="skill.isVisible" (change)="toggleVisibility(skill)">
+        <span class="slider"></span>
+      </label>
+
+      <button type="button" class="icon-btn" (click)="openEdit(skill)">✎</button>
+      <button type="button" class="icon-btn" (click)="deleteSkill(skill)">🗑</button>
+    </div>
+    }
+  </div>
+
+  @if (isModalOpen()) {
+  <app-skill-modal [skill]="editingSkill()" (saved)="onSaved($event)" (closed)="closeModal()" />
+  }
+
+
+</div>

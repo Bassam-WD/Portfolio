@@ -1,0 +1,51 @@
+<article class="glass-surface project-card">
+
+  <!-- Project Thumbnail -->
+  <div class="project-image-box">
+    @if (thumbnailUrl; as imgUrl) {
+      <img [src]="imgUrl" [alt]="proj.title" loading="lazy" />
+    } @else {
+      <div class="image-placeholder">
+        <span>{{ proj.title?.charAt(0) || 'P' }}</span>
+      </div>
+    }
+
+    @if (categoryName) {
+      <span class="category-badge">{{ categoryName }}</span>
+    }
+  </div>
+
+  <!-- Project Body -->
+  <div class="project-body">
+    <h3 class="project-title">{{ proj.title }}</h3>
+    <p class="project-desc">{{ proj.description }}</p>
+
+    <!-- Tech Stack Tags -->
+    @if (techList.length > 0) {
+      <div class="tech-tags">
+        @for (tech of techList.slice(0, 4); track $index) {
+          <span class="tech-tag">{{ tech }}</span>
+        }
+      </div>
+    }
+
+    <!-- Action Links -->
+    <div class="project-links">
+      @if (proj.liveUrl || proj.demoUrl; as live) {
+        <a [href]="live" target="_blank" rel="noopener noreferrer" class="link-btn primary">
+          <span>Live Demo</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+          </svg>
+        </a>
+      }
+
+      @if (proj.githubUrl || proj.repoUrl; as repo) {
+        <a [href]="repo" target="_blank" rel="noopener noreferrer" class="link-btn secondary">
+          <span>Source Code</span>
+        </a>
+      }
+    </div>
+  </div>
+
+</article>

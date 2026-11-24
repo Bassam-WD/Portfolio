@@ -1,0 +1,37 @@
+<div class="backdrop" (click)="closed.emit()">
+  <form
+    class="modal"
+    [formGroup]="skillForm"
+    (ngSubmit)="save()"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="modal-header">
+      <h2>{{ skill() ? 'Edit Skill' : 'Add New Skill' }}</h2>
+      <button type="button" class="icon-btn" (click)="closed.emit()">×</button>
+    </div>
+
+    <label class="field">
+      <span>Skill Name <b>*</b></span>
+      <input type="text" formControlName="name" placeholder="e.g. React 19">
+      @if (skillForm.controls.name.touched && skillForm.controls.name.invalid) {
+        <small class="error">Skill name is required.</small>
+      }
+    </label>
+
+    <div class="visibility-box">
+      <div>
+        <strong>Show on public portfolio</strong>
+        <small>Enable to surface this skill across portfolio showcases</small>
+      </div>
+      <label class="switch">
+        <input type="checkbox" formControlName="isVisible">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel" (click)="closed.emit()">Cancel</button>
+      <button type="submit" class="btn-save">Save Skill</button>
+    </div>
+  </form>
+</div>

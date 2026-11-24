@@ -1,0 +1,122 @@
+<div class="backdrop" (click)="closed.emit()">
+  <form
+    class="modal"
+    [formGroup]="projectForm"
+    (ngSubmit)="save()"
+    (click)="$event.stopPropagation()"
+  >
+    <div class="modal-header">
+      <h2>{{ project ? 'Edit Project' : 'Add New Project' }}</h2>
+      <button type="button" class="icon-btn" (click)="closed.emit()">×</button>
+    </div>
+
+    <div class="modal-scroll">
+
+      <!-- Cover -->
+      <div class="field">
+        <span>Cover Image <b>*</b></span>
+        <label class="cover-upload" [class.has-error]="coverError()">
+          <input type="file" accept="image/png, image/jpeg, image/webp" (change)="onCoverSelected($event)">
+          @if (previewUrl()) {
+            <img [src]="previewUrl()" alt="Cover preview">
+          } @else {
+            <div class="cover-empty">Click to upload an image</div>
+          }
+        </label>
+        @if (coverError()) {
+          <small class="error">Cover image is required.</small>
+        }
+      </div>
+
+      <!-- Title -->
+      <label class="field">
+        <span>Title <b>*</b></span>
+        <input type="text" formControlName="title" placeholder="e.g. MK Cafe Website">
+        @if (projectForm.controls.title.touched && projectForm.controls.title.invalid) {
+          <small class="error">Title is required.</small>
+        }
+      </label>
+
+      <!-- Short description -->
+      <label class="field">
+        <div class="label-row">
+          <span>Short Description <b>*</b></span>
+          <small>{{ projectForm.controls.shortDescription.value.length }} / 160</small>
+        </div>
+        <input type="text" formControlName="shortDescription" maxlength="160">
+        @if (projectForm.controls.shortDescription.touched && projectForm.controls.shortDescription.invalid) {
+          <small class="error">Short description is required.</small>
+        }
+      </label>
+
+      <!-- Full description -->
+      <label class="field">
+        <span>Full Description</span>
+        <textarea rows="4" formControlName="fullDescription"></textarea>
+      </label>
+
+      <!-- Tech stack -->
+      <div class="field">
+        <span>Tech Stack</span>
+        <input
+          type="text"
+          [formControl]="techInput"
+          placeholder="Type a technology and press Enter"
+          (keydown.enter)="addTech($event)"
+        >
+        <div class="tags">
+          @for (tech of techStack(); track tech) {
+            <span class="tag">
+              {{ tech }}
+              <button type="button" (click)="removeTech(tech)">×</button>
+            </span>
+          }
+        </div>
+      </div>
+
+      <!-- Links -->
+      <div class="two-cols">
+        <label class="field">
+          <span>Live URL</span>
+          <input type="url" formControlName="liveUrl" placeholder="https://...">
+        </label>
+        <label class="field">
+          <span>GitHub URL</span>
+          <input type="url" formControlName="githubUrl" placeholder="https://github.com/...">
+        </label>
+      </div>
+
+      <!-- Published -->
+      <div class="visibility-box">
+        <div>
+          <strong>Publish on portfolio</strong>
+          <small>Drafts stay hidden from the public site</small>
+        </div>
+        <label class="switch">
+          <input type="checkbox" formControlName="isPublished">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+      <!-- Show in Home -->
+      <div class="visibility-box" [style.opacity]="projectForm.controls.isPublished.value ? 1 : 0.5">
+        <div>
+          <strong>Show in Home Page</strong>
+          <small>Feature this project in the main landing page section</small>
+        </div>
+        <label class="switch">
+          <input type="checkbox" formControlName="inHome">
+          <span class="slider"></span>
+        </label>
+      </div>
+
+    </div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn-cancel" (click)="closed.emit()">Cancel</button>
+      <button type="submit" class="btn-save" [disabled]="isSaving()">
+        {{ isSaving() ? 'Saving...' : 'Save Project' }}
+      </button>
+    </div>
+  </form>
+</div>

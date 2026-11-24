@@ -1,0 +1,87 @@
+.dashboard-header {
+  height: 64px;
+  padding: 0 25px;
+  background: #ffffff;
+  border-bottom: 1px solid #e9eaf0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Breadcrumb */
+
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 11px;
+  color: #777e8c;
+}
+
+.breadcrumb-separator {
+  color: #b6bbc5;
+}
+
+.current-page {
+  color: #202633;
+  font-weight: 600;
+}
+
+/* Header Actions */
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.live-site-btn {
+  height: 30px;
+  padding: 0 12px;
+  border: 1px solid #e5e7ed;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  color: #202633;
+  background: #ffffff;
+  text-decoration: none;
+  font-size: 10px;
+  transition: 0.2s;
+}
+
+.live-site-btn:hover {
+  background: #f5f5fa;
+}
+
+.live-site-btn svg {
+  width: 12px;
+  height: 12px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.7;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.theme-btn {
+  width: 30px;
+  height: 30px;
+  border: none;
+  background: transparent;
+  color: #343b49;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.theme-btn svg {
+  width: 17px;
+  height: 17px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.6;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}

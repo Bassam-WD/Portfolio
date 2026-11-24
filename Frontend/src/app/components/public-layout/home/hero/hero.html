@@ -1,0 +1,68 @@
+<section class="hero-wrapper">
+  <div class="hero-glass-card">
+
+    <!-- Left Content -->
+    <div class="hero-content">
+      <span class="hero-greeting">HELLO, I'M</span>
+
+      <h1 class="hero-name">
+        {{ profileData?.name || 'Bassam Marouf' }}
+      </h1>
+
+      <h2 class="hero-role">
+        {{ profileData?.jobTitle }}
+      </h2>
+
+      <p class="hero-bio">
+        {{ profileData?.shortBio }}
+      </p>
+
+      <!-- Action Buttons -->
+      <div class="hero-actions">
+        <a routerLink="/projects" class="btn-dark-pill">
+          <span>View My Work</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 17L17 7M17 7H7M17 7V17" />
+          </svg>
+        </a>
+
+        @if (profileData?.cvFile?.url; as cvUrl) {
+          <a [href]="serverUrl + cvUrl" target="_blank" download class="btn-glass-pill">
+            <span>Download CV</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+            </svg>
+          </a>
+        }
+      </div>
+    </div>
+
+    <!-- Right Visual: Organic Glass Frame -->
+    <div class="hero-visual">
+      <div class="organic-frame">
+        @if (profileData?.profileImage?.url; as imgUrl) {
+          <img [src]="serverUrl + imgUrl" [alt]="profileData?.name" />
+        }
+      </div>
+
+      <!-- Floating Glass Sparkle Orb (Bottom Left) -->
+      <div class="glass-orb" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z" />
+        </svg>
+      </div>
+
+      <!-- Floating Glass Availability Card (Top Right) -->
+      @if (profileData?.isAvailable) {
+        <div class="glass-status-card">
+          <span class="status-pulse"></span>
+          <div class="status-text">
+            <strong>Available</strong>
+            <span>For New Projects</span>
+          </div>
+        </div>
+      }
+    </div>
+
+  </div>
+</section>

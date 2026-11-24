@@ -1,0 +1,38 @@
+<section class="skills-section section-spacing" id="skills">
+  <div class="container">
+    <div class="glass-card skills-wrapper">
+
+      <!-- Section Header -->
+      <div class="skills-header">
+        <span class="section-eyebrow">TECHNICAL ARSENAL</span>
+        <h2 class="section-title">
+          My <span class="gradient-text">Skills</span>
+        </h2>
+        <p class="skills-subtitle">
+          Technologies, frameworks, and tools I use to build scalable full-stack web applications.
+        </p>
+      </div>
+
+      <!-- Skills Grid -->
+      @if (visibleSkills().length > 0) {
+        <div class="skills-grid">
+          @for (skill of visibleSkills(); track skill._id || skill.name) {
+            <div class="skill-pill">
+              @if (skill.icon) {
+                @if (isImageUrl(skill.icon)) {
+                  <img [src]="skill.icon" [alt]="skill.name" class="skill-icon-img" />
+                } @else {
+                  <i [class]="skill.icon" class="skill-icon"></i>
+                }
+              }
+              <span class="skill-name">{{ skill.name }}</span>
+            </div>
+          }
+        </div>
+      } @else {
+        <p class="empty-state">No skills added yet.</p>
+      }
+
+    </div>
+  </div>
+</section>

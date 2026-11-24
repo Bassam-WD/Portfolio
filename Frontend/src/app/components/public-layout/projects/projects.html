@@ -1,0 +1,69 @@
+<section class="projects-page-section section-spacing">
+  <div class="container">
+    <div class="glass-card projects-page-wrapper">
+
+      <!-- Top Back Navigation -->
+      <div class="top-nav">
+        <a routerLink="/" class="back-link">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M7 16l-4-4m0 0l4-4m-4 4h18" />
+          </svg>
+          <span>Back to Home</span>
+        </a>
+      </div>
+
+      <!-- Page Header -->
+      <div class="projects-header">
+        <span class="section-eyebrow">COMPLETE ARCHIVE</span>
+        <h1 class="section-title">
+          All <span class="gradient-text">Projects</span>
+        </h1>
+        <p class="projects-subtitle">
+          Explore the full collection of web applications, dashboards, and full-stack builds.
+        </p>
+      </div>
+
+      <!-- Filter & Search Controls -->
+      <div class="controls-bar">
+        <!-- Tech Stack Filter Pills -->
+        @if (technologies().length > 1) {
+          <div class="filter-pills">
+            @for (tech of technologies(); track tech) {
+              <button
+                type="button"
+                class="filter-pill"
+                [class.active]="selectedTech() === tech"
+                (click)="selectTech(tech)">
+                {{ tech }}
+              </button>
+            }
+          </div>
+        }
+
+        <!-- Search Input -->
+        <div class="search-box">
+          <input
+            type="text"
+            placeholder="Search projects..."
+            [value]="searchQuery()"
+            (input)="onSearch($event)"
+            class="search-input" />
+        </div>
+      </div>
+
+      <!-- Projects Grid -->
+      @if (isLoading()) {
+        <p class="empty-state">Loading projects...</p>
+      } @else if (filteredProjects().length > 0) {
+        <div class="works-grid">
+          @for (item of filteredProjects(); track item._id) {
+            <app-project-card [project]="item" />
+          }
+        </div>
+      } @else {
+        <p class="empty-state">No projects match your current filter.</p>
+      }
+
+    </div>
+  </div>
+</section>

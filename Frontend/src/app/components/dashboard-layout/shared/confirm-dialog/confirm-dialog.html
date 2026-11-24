@@ -1,0 +1,18 @@
+<div class="backdrop" (click)="cancelled.emit()">
+  <div class="dialog" role="alertdialog" (click)="$event.stopPropagation()">
+
+    <div class="dialog-body">
+      <div class="dialog-icon">🗑</div>
+      <div>
+        <h3>{{ title() }}</h3>
+        <p>{{ message() }}</p>
+      </div>
+    </div>
+
+    <div class="dialog-actions">
+      <button type="button" class="btn-cancel" (click)="cancelled.emit()">Cancel</button>
+      <button type="button" class="btn-danger" (click)="confirmed.emit()">{{ confirmText() }}</button>
+    </div>
+
+  </div>
+</div>

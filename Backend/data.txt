@@ -1,0 +1,12 @@
+{
+    "title":"project one",
+    "shortDescription":"tuigheorihgohbohnboighboitghghoiehjgoishnboirhjg0w",
+    "fullDescription":"rgoirhjgoiadfhjgoithjghoiththgorhg0rghfgn59y9yv09h oihjgoitrhgohgohgohjg0 roigu0roguohgoghaofhgoahjgoifgjoaisjoifgjofgjogjfogjadffdhghfdjhgkjfkji",
+    "techStack":["react","node.js","express.js"],
+    "coverImage":{
+        "name":"Image1","size":5,"url":"imgeurl"
+    },
+    "liveUrl":"https/ojktoojj",
+    "githubUrl":"githup url",
+    "isPublished":false
+}
